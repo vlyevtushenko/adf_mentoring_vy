@@ -1,0 +1,17 @@
+{
+	"name": "Trigger_vod",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Stopped",
+		"pipelines": [],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Hour",
+				"interval": 24,
+				"startTime": "2025-02-06T17:36:00Z",
+				"timeZone": "UTC"
+			}
+		}
+	}
+}

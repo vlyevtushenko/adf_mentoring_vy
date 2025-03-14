@@ -1,0 +1,28 @@
+{
+	"name": "Binary_online_mod7",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "raw_online",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"json_name": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": {
+					"value": "@dataset().json_name",
+					"type": "Expression"
+				},
+				"folderPath": "online",
+				"container": "raw"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

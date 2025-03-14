@@ -1,0 +1,19 @@
+{
+	"name": "Azure-IR-M8",
+	"properties": {
+		"type": "Managed",
+		"description": "For completion module 8",
+		"typeProperties": {
+			"computeProperties": {
+				"location": "France Central",
+				"dataFlowProperties": {
+					"computeType": "General",
+					"coreCount": 8,
+					"timeToLive": 5,
+					"cleanup": false,
+					"customProperties": []
+				}
+			}
+		}
+	}
+}

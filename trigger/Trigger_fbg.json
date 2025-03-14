@@ -1,0 +1,28 @@
+{
+	"name": "Trigger_fbg",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Stopped",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "CopyPipeline_fbg",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"windowStart": "@{addminutes(trigger().scheduledTime, -10)}",
+					"windowEnd": "@trigger().scheduledTime"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Minute",
+				"interval": 5,
+				"startTime": "2025-02-06T18:00:00Z",
+				"timeZone": "UTC"
+			}
+		}
+	}
+}

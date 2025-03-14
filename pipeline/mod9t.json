@@ -1,0 +1,78 @@
+{
+	"name": "mod9t",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy data1",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"additionalColumns": [
+							{
+								"name": "piplineId",
+								"value": {
+									"value": "@pipeline().RunId",
+									"type": "Expression"
+								}
+							},
+							{
+								"name": "source_filename",
+								"value": "$$FILENAME"
+							}
+						],
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"wildcardFolderPath": "metadata-driven",
+							"wildcardFileName": "movies_metadata.csv",
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE stg.movies_metadata",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"value": "@json('{\n            \"type\": \"TabularTranslator\",\n            \"mappings\": [\n                {\n                    \"source\": {\n                        \"name\": \"adult\",\n                        \"type\": \"String\",\n                        \"physicalType\": \"String\"\n                    },\n                    \"sink\": {\n                        \"name\": \"adult\",\n                        \"type\": \"String\",\n                        \"physicalType\": \"nvarchar\"\n                    }\n                },\n                {\n                    \"source\": {\n                        \"name\": \"belongs_to_collection\",\n                        \"type\": \"String\",\n                        \"physicalType\": \"String\"\n                    },\n                    \"sink\": {\n                        \"name\": \"belongs_to_collection\",\n                        \"type\": \"String\",\n                        \"physicalType\": \"nvarchar\"\n                    }\n                },\n                {\n                    \"source\": {\n                        \"name\": \"budget\",\n                        \"type\": \"String\",\n                        \"physicalType\": \"String\"\n                    },\n                    \"sink\": {\n                        \"name\": \"budget\",\n                        \"type\": \"String\",\n                        \"physicalType\": \"nvarchar\"\n                    }\n                },\n                {\n                    \"source\": {\n                        \"name\": \"genres\",\n                        \"type\": \"String\",\n                        \"physicalType\": \"String\"\n                    },\n                    \"sink\": {\n                        \"name\": \"genres\",\n                        \"type\": \"String\",\n                        \"physicalType\": \"nvarchar\"\n                    }\n                },\n                {\n                    \"source\": {\n                        \"name\": \"homepage\",\n                        \"type\": \"String\",\n                        \"physicalType\": \"String\"\n                    },\n                    \"sink\": {\n                        \"name\": \"homepage\",\n                        \"type\": \"String\",\n                        \"physicalType\": \"nvarchar\"\n                    }\n                },\n                {\n                    \"source\": {\n                        \"name\": \"id\",\n                        \"type\": \"String\",\n                        \"physicalType\": \"String\"\n                    },\n                    \"sink\": {\n                        \"name\": \"id\",\n                        \"type\": \"String\",\n                        \"physicalType\": \"nvarchar\"\n                    }\n                },\n                {\n                    \"source\": {\n                        \"name\": \"imdb_id\",\n                        \"type\": \"String\",\n                        \"physicalType\": \"String\"\n                    },\n                    \"sink\": {\n                        \"name\": \"imdb_id\",\n                        \"type\": \"String\",\n                        \"physicalType\": \"nvarchar\"\n                    }\n                },\n                {\n                    \"source\": {\n                        \"name\": \"original_language\",\n                        \"type\": \"String\",\n                        \"physicalType\": \"String\"\n                    },\n                    \"sink\": {\n                        \"name\": \"original_language\",\n                        \"type\": \"String\",\n                        \"physicalType\": \"nvarchar\"\n                    }\n                },\n                {\n                    \"source\": {\n                        \"name\": \"original_title\",\n                        \"type\": \"String\",\n                        \"physicalType\": \"String\"\n                    },\n                    \"sink\": {\n                        \"name\": \"original_title\",\n                        \"type\": \"String\",\n                        \"physicalType\": \"nvarchar\"\n                    }\n                },\n                {\n                    \"source\": {\n                        \"name\": \"overview\",\n                        \"type\": \"String\",\n                        \"physicalType\": \"String\"\n                    },\n                    \"sink\": {\n                        \"name\": \"overview\",\n                        \"type\": \"String\",\n                        \"physicalType\": \"nvarchar\"\n                    }\n                },\n                {\n                    \"source\": {\n                        \"name\": \"popularity\",\n                        \"type\": \"String\",\n                        \"physicalType\": \"String\"\n                    },\n                    \"sink\": {\n                        \"name\": \"popularity\",\n                        \"type\": \"String\",\n                        \"physicalType\": \"nvarchar\"\n                    }\n                },\n                {\n                    \"source\": {\n                        \"name\": \"poster_path\",\n                        \"type\": \"String\",\n                        \"physicalType\": \"String\"\n                    },\n                    \"sink\": {\n                        \"name\": \"poster_path\",\n                        \"type\": \"String\",\n                        \"physicalType\": \"nvarchar\"\n                    }\n                },\n                {\n                    \"source\": {\n                        \"name\": \"production_companies\",\n                        \"type\": \"String\",\n                        \"physicalType\": \"String\"\n                    },\n                    \"sink\": {\n                        \"name\": \"production_companies\",\n                        \"type\": \"String\",\n                        \"physicalType\": \"nvarchar\"\n                    }\n                },\n                {\n                    \"source\": {\n                        \"name\": \"production_countries\",\n                        \"type\": \"String\",\n                        \"physicalType\": \"String\"\n                    },\n                    \"sink\": {\n                        \"name\": \"production_countries\",\n                        \"type\": \"String\",\n                        \"physicalType\": \"nvarchar\"\n                    }\n                },\n                {\n                    \"source\": {\n                        \"name\": \"release_date\",\n                        \"type\": \"String\",\n                        \"physicalType\": \"String\"\n                    },\n                    \"sink\": {\n                        \"name\": \"release_date\",\n                        \"type\": \"String\",\n                        \"physicalType\": \"nvarchar\"\n                    }\n                },\n                {\n                    \"source\": {\n                        \"name\": \"revenue\",\n                        \"type\": \"String\",\n                        \"physicalType\": \"String\"\n                    },\n                    \"sink\": {\n                        \"name\": \"revenue\",\n                        \"type\": \"String\",\n                        \"physicalType\": \"nvarchar\"\n                    }\n                },\n                {\n                    \"source\": {\n                        \"name\": \"runtime\",\n                        \"type\": \"String\",\n                        \"physicalType\": \"String\"\n                    },\n                    \"sink\": {\n                        \"name\": \"runtime\",\n                        \"type\": \"String\",\n                        \"physicalType\": \"nvarchar\"\n                    }\n                },\n                {\n                    \"source\": {\n                        \"name\": \"spoken_languages\",\n                        \"type\": \"String\",\n                        \"physicalType\": \"String\"\n                    },\n                    \"sink\": {\n                        \"name\": \"spoken_languages\",\n                        \"type\": \"String\",\n                        \"physicalType\": \"nvarchar\"\n                    }\n                },\n                {\n                    \"source\": {\n                        \"name\": \"status\",\n                        \"type\": \"String\",\n                        \"physicalType\": \"String\"\n                    },\n                    \"sink\": {\n                        \"name\": \"status\",\n                        \"type\": \"String\",\n                        \"physicalType\": \"nvarchar\"\n                    }\n                },\n                {\n                    \"source\": {\n                        \"name\": \"tagline\",\n                        \"type\": \"String\",\n                        \"physicalType\": \"String\"\n                    },\n                    \"sink\": {\n                        \"name\": \"tagline\",\n                        \"type\": \"String\",\n                        \"physicalType\": \"nvarchar\"\n                    }\n                },\n                {\n                    \"source\": {\n                        \"name\": \"title\",\n                        \"type\": \"String\",\n                        \"physicalType\": \"String\"\n                    },\n                    \"sink\": {\n                        \"name\": \"title\",\n                        \"type\": \"String\",\n                        \"physicalType\": \"nvarchar\"\n                    }\n                },\n                {\n                    \"source\": {\n                        \"name\": \"video\",\n                        \"type\": \"String\",\n                        \"physicalType\": \"String\"\n                    },\n                    \"sink\": {\n                        \"name\": \"video\",\n                        \"type\": \"String\",\n                        \"physicalType\": \"nvarchar\"\n                    }\n                },\n                {\n                    \"source\": {\n                        \"name\": \"vote_average\",\n                        \"type\": \"String\",\n                        \"physicalType\": \"String\"\n                    },\n                    \"sink\": {\n                        \"name\": \"vote_average\",\n                        \"type\": \"String\",\n                        \"physicalType\": \"nvarchar\"\n                    }\n                },\n                {\n                    \"source\": {\n                        \"name\": \"vote_count\",\n                        \"type\": \"String\",\n                        \"physicalType\": \"String\"\n                    },\n                    \"sink\": {\n                        \"name\": \"vote_count\",\n                        \"type\": \"String\",\n                        \"physicalType\": \"nvarchar\"\n                    }\n                },\n                {\n                    \"source\": {\n                        \"name\": \"piplineId\",\n                        \"type\": \"String\"\n                    },\n                    \"sink\": {\n                        \"name\": \"pipelineId\",\n                        \"type\": \"String\",\n                        \"physicalType\": \"nvarchar\"\n                    }\n                },\n                {\n                    \"source\": {\n                        \"name\": \"source_filename\",\n                        \"type\": \"String\"\n                    },\n                    \"sink\": {\n                        \"name\": \"source_filename\",\n                        \"type\": \"String\",\n                        \"physicalType\": \"nvarchar\"\n                    }\n                }\n            ],\n            \"typeConversion\": true,\n            \"typeConversionSettings\": {\n                \"allowDataTruncation\": true,\n                \"treatBooleanAsNumber\": false\n            }\n        }')",
+						"type": "Expression"
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "test_Maping",
+						"type": "DatasetReference",
+						"parameters": {
+							"filename": "movies_metadata.csv"
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "stg_movies_metadata",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2025-02-25T13:31:18Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

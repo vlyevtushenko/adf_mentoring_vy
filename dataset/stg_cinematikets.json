@@ -1,0 +1,52 @@
+{
+	"name": "stg_cinematikets",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase_admin",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "cinema_code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "cinema_name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "movie_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "ticket_count",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "ticket_price",
+				"type": "decimal",
+				"precision": 4,
+				"scale": 1
+			},
+			{
+				"name": "transaction_id",
+				"type": "nvarchar"
+			},
+			{
+				"name": "transaction_date",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			}
+		],
+		"typeProperties": {
+			"schema": "stg",
+			"table": "cinema_tickets"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

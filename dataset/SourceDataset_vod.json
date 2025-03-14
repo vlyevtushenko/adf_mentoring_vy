@@ -1,0 +1,19 @@
+{
+	"name": "SourceDataset_vod",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Online_blobstorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"folderPath": "Module07_01_LoadInitialData",
+				"container": "online"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

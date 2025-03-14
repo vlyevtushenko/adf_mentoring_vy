@@ -1,0 +1,68 @@
+{
+	"name": "AzureSqlTable1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase_admin",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "ID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "SourceContainer",
+				"type": "varchar"
+			},
+			{
+				"name": "SourceFolder",
+				"type": "varchar"
+			},
+			{
+				"name": "SourceFileName",
+				"type": "varchar"
+			},
+			{
+				"name": "ColumnDelimiter",
+				"type": "varchar"
+			},
+			{
+				"name": "SourceEncoding",
+				"type": "varchar"
+			},
+			{
+				"name": "SourceEscapeCharacter",
+				"type": "varchar"
+			},
+			{
+				"name": "QuoteCharacter",
+				"type": "varchar"
+			},
+			{
+				"name": "DestSchema",
+				"type": "varchar"
+			},
+			{
+				"name": "DestTableName",
+				"type": "varchar"
+			},
+			{
+				"name": "DIU",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Mapping",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "etl",
+			"table": "tControlMetadata"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

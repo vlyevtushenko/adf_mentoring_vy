@@ -1,0 +1,63 @@
+{
+	"name": "archive_online_json",
+	"properties": {
+		"activities": [
+			{
+				"name": "archive_online",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "BinarySource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": false,
+							"modifiedDatetimeStart": null,
+							"modifiedDatetimeEnd": null,
+							"wildcardFolderPath": "online",
+							"wildcardFileName": "*.json",
+							"deleteFilesAfterCompletion": true
+						},
+						"formatSettings": {
+							"type": "BinaryReadSettings"
+						}
+					},
+					"sink": {
+						"type": "BinarySink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings",
+							"copyBehavior": "PreserveHierarchy"
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "Binary_online_mod7",
+						"type": "DatasetReference",
+						"parameters": {
+							"json_name": "*.json"
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Archive_dataset_online",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2025-02-08T17:31:32Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

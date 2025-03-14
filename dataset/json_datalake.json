@@ -1,0 +1,59 @@
+{
+	"name": "json_datalake",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "raw_online",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"json_name": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": {
+					"value": "@dataset().json_name",
+					"type": "Expression"
+				},
+				"folderPath": "online",
+				"container": "raw"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"serviceName": {
+					"type": "string"
+				},
+				"serviceCode": {
+					"type": "string"
+				},
+				"movieId": {
+					"type": "integer"
+				},
+				"userId": {
+					"type": "integer"
+				},
+				"price": {
+					"type": "string"
+				},
+				"transaction": {
+					"type": "object",
+					"properties": {
+						"id": {
+							"type": "string"
+						},
+						"datetime": {
+							"type": "string"
+						}
+					}
+				}
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

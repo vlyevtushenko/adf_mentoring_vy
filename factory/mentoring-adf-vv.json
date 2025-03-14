@@ -1,0 +1,17 @@
+{
+	"name": "mentoring-adf-vv",
+	"properties": {
+		"globalParameters": {
+			"postURL": {
+				"type": "string",
+				"value": "https://mentoring-key-vault-vv.vault.azure.net/secrets/URLPOST/91af86df6a0d4b988c5d12fd3e1a947d ?api-version=7.0"
+			}
+		}
+	},
+	"location": "francecentral",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "d43a72f1-c67d-4ad0-a9d5-581f22281482",
+		"tenantId": "b41b72d0-4e9f-4c26-8a69-f949f367c91d"
+	}
+}

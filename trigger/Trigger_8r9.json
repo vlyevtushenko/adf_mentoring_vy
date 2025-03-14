@@ -1,0 +1,29 @@
+{
+	"name": "Trigger_8r9",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Stopped",
+		"pipeline": {
+			"pipelineReference": {
+				"referenceName": "CopyPipeline_8r9",
+				"type": "PipelineReference"
+			},
+			"parameters": {
+				"windowStart": "@{addhours(trigger().scheduledTime, -24)}",
+				"windowEnd": "@trigger().scheduledTime"
+			}
+		},
+		"type": "TumblingWindowTrigger",
+		"typeProperties": {
+			"frequency": "Hour",
+			"interval": 24,
+			"startTime": "2025-02-06T17:28:00Z",
+			"delay": "00:00:00",
+			"maxConcurrency": 50,
+			"retryPolicy": {
+				"intervalInSeconds": 30
+			},
+			"dependsOn": []
+		}
+	}
+}

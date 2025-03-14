@@ -1,0 +1,130 @@
+{
+	"name": "test_Maping",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "raw_online",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"filename": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": {
+					"value": "@dataset().filename",
+					"type": "Expression"
+				},
+				"folderPath": "metadata-driven",
+				"container": "raw"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\"",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "adult",
+				"type": "String"
+			},
+			{
+				"name": "belongs_to_collection",
+				"type": "String"
+			},
+			{
+				"name": "budget",
+				"type": "String"
+			},
+			{
+				"name": "genres",
+				"type": "String"
+			},
+			{
+				"name": "homepage",
+				"type": "String"
+			},
+			{
+				"name": "id",
+				"type": "String"
+			},
+			{
+				"name": "imdb_id",
+				"type": "String"
+			},
+			{
+				"name": "original_language",
+				"type": "String"
+			},
+			{
+				"name": "original_title",
+				"type": "String"
+			},
+			{
+				"name": "overview",
+				"type": "String"
+			},
+			{
+				"name": "popularity",
+				"type": "String"
+			},
+			{
+				"name": "poster_path",
+				"type": "String"
+			},
+			{
+				"name": "production_companies",
+				"type": "String"
+			},
+			{
+				"name": "production_countries",
+				"type": "String"
+			},
+			{
+				"name": "release_date",
+				"type": "String"
+			},
+			{
+				"name": "revenue",
+				"type": "String"
+			},
+			{
+				"name": "runtime",
+				"type": "String"
+			},
+			{
+				"name": "spoken_languages",
+				"type": "String"
+			},
+			{
+				"name": "status",
+				"type": "String"
+			},
+			{
+				"name": "tagline",
+				"type": "String"
+			},
+			{
+				"name": "title",
+				"type": "String"
+			},
+			{
+				"name": "video",
+				"type": "String"
+			},
+			{
+				"name": "vote_average",
+				"type": "String"
+			},
+			{
+				"name": "vote_count",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
